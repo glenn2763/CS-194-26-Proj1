@@ -1,1 +1,76 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Colorizing the Prokudin-Gorskii photo collection</title>
+  <meta name="CS 194-26 Project 1" content="">
+  <meta name="Glenn Wysen" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div style="margin-top: 5%">
+        <h2 style="text-align: center;">Colorizing the Prokudin-Gorskii Photo Collection</h2>
+        <h3 style="text-align: center;">CS 194-26 Project 1 Fall 2020</h3>
+        <h4 style="text-align: center;">Glenn Wysen</h4>
+      </div>
+    </div>
+    <div class="row">
+      
+    </div>
+    <div class="row" style="margin-top: 10%">
+      <div class="twelve columns">
+        <h4>Overview</h4>
+        <p>
+          This project's main goal was to take black and white photos taken by Sergey Mikhaylovich Prokudin-Gorsky in the early 
+          1900s and turn them into color photos. Prokudin-Gorsky took each photo three times with a different color filter (RGB)
+          in front of the each time. By aligning these images and mapping their intensities to the RGB color channels, I was 
+          able to recreate some strikingly vivid images from three black and white photos. 
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10%">
+      <div class="eight columns">
+        <h4>Implementation</h4>
+        <p>
+          To start, I read in the raw photo strips (pictured to the right) and divided each one into its three components. To 
+          align two images I took the L2 norm (also known as the Sum of Squared Differences (SSD)) distance between them as I 
+          translated one image around a 15 by 15 pixel area. The translation with the minimum SSD should theoretically be the 
+          translation that lines up the best with the other image. However, I ran into issues with this algorithm due to the 
+          different borders around each photo.
+        </p>
+      </div>
+      <div class="four columns">
+        <img class="u-full-width" src="images/cathedral.jpg" alt="cathedral vertical">
+      </div>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

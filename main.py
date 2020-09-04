@@ -117,8 +117,9 @@ def process_image(img):
     im_out = np.dstack([ar, ag, b])
 
     # # save the image
-    # fname = '/outputs/cathedral_colored.jpg'
-    # skio.imsave(fname, im_out)
+    fname = 'outputs/' + img[5:len(img) - 4] + '.jpg'
+    print(fname)
+    skio.imsave(fname, im_out)
 
     # # display the image
     skio.imshow(im_out)
@@ -128,21 +129,21 @@ def process_image(img):
 
 # These three files produces blurred/misaligned images, not sure why but the spec said to not tweak too many parameters 
 # if most of the images work
-# imname = 'data/lady.tif'
-# imname = 'data/melons.tif'
-# imname = 'data/self_portrait.tif'
+# imname = 'lady.tif'
+# imname = 'melons.tif'
+# imname = 'self_portrait.tif'
 
 
-# imname = 'data/cathedral.jpg'
-# imname = 'data/tobolsk.jpg'
-# imname = 'data/monastery.jpg'
-# imname = 'data/castle.tif'
-imname = 'data/emir.tif'
-# imname = 'data/harvesters.tif'
-# imname = 'data/icon.tif'
-# imname = 'data/onion_church.tif'
-# imname = 'data/three_generations.tif'
-# imname = 'data/train.tif'
-# imname = 'data/workshop.tif'
+imname = 'cathedral.jpg'
+# imname = 'tobolsk.jpg'
+# imname = 'monastery.jpg'
+# imname = 'castle.tif'
+# imname = 'emir.tif'
+# imname = 'harvesters.tif'
+# imname = 'icon.tif'
+# imname = 'onion_church.tif'
+# imname = 'three_generations.tif'
+# imname = 'train.tif'
+# imname = 'workshop.tif'
 
-process_image(imname)
+process_image('data/' + imname)
