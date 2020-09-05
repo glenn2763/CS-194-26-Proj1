@@ -40,7 +40,8 @@
       </div>
     </div>
     <div class="row">
-      
+      <img class="u-full-width" src="images/emir.jpg" alt="emir">
+      <figcaption style="text-align: center"><b>Fig.1</b> - Colorized image of Emir Said Mir Mohammed Alim Khan</figcaption>
     </div>
     <div class="row" style="margin-top: 10%">
       <div class="twelve columns">
@@ -54,21 +55,138 @@
       </div>
     </div>
     <div class="row" style="margin-top: 10%">
-      <div class="eight columns">
+      <div class="seven columns">
         <h4>Implementation</h4>
         <p>
-          To start, I read in the raw photo strips (pictured to the right) and divided each one into its three components. To 
+          To start, I read in the raw photo strips (<b>Fig.2</b>) and divided each one into its three components. To 
           align two images I took the L2 norm (also known as the Sum of Squared Differences (SSD)) distance between them as I 
           translated one image around a 15 by 15 pixel area. The translation with the minimum SSD should theoretically be the 
           translation that lines up the best with the other image. However, I ran into issues with this algorithm due to the 
-          different borders around each photo.
+          different borders around each photo. To solve this, before aligning each image I cropped 5% off every side. This 
+          made the alignment process less dependent on meaningless borders and more dependent on the inner part of the 
+          photo that I was actually trying to align.
         </p>
+        <p>
+          After aligning each image, I was able to take the intensities of each filtered plate and put those into their 
+          corresponding color channel to create a final color image (<b>Fig.3</b>).
+        </p>
+        <img class="u-full-width" style="margin-top: 15.5%" src="images/cathedral.jpg" alt="cathedral colored version">
+        <figcaption style="text-align: center"><b>Fig.3</b> - Composite image of all three layers aligned and stacked.
+        </figcaption>
       </div>
-      <div class="four columns">
-        <img class="u-full-width" src="images/cathedral.jpg" alt="cathedral vertical">
+      <div class="five columns">
+        <img class="u-full-width" src="images/cathedral-strip.jpg" alt="cathedral strip">
+        <figcaption style="text-align: center"><b>Fig.2</b> - Photo strip with blue, green, and red filtered image from top to 
+          bottom.</figcaption>
       </div>
     </div>
+    <div style="margin-top: 10%" class="row">
+      <div class="six columns">
+        <h4>Calculated Offsets</h4>
+        <p>
+          To the right are the offsets I used for the red and green channels of each image. Each offset was calculated by 
+          comparing the red or green channel image to the blue channel image. Images marked with a * ended up not aligning 
+          properly at the end. This is most likely due to an aspect of the images that my algorithm wasn't able to fix. 
+          If I implemented rotational correction as well as translational correction I imagine these two images would 
+          align closer.
+        </p>
+        <h4>Example Images</h4>
+        <img class="u-full-width" src="images/hut.jpg" alt="hut">
+        <figcaption style="text-align: center"><b>Fig.4</b> - A Russian building.</figcaption>
+        <img style="margin-top: 2.5%" class="u-full-width" src="images/gate.jpg" alt="gate">
+        <figcaption style="text-align: center"><b>Fig.5</b> - A small gate.</figcaption>
+      </div>
+      <div class="six columns">
+        <table class="u-full-width">
+          <thead>
+            <tr>
+              <th>Image Name</th>
+              <th>Offset - Green</th>
+              <th>Offset - Red</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cathedral.jpg</td>
+              <td>[5, 2]</td>
+              <td>[12, 3]</td>
+            </tr>
+            <tr>
+              <td>monastery.jpg</td>
+              <td>[-3, 2]</td>
+              <td>[3, 2]</td>
+            </tr>
+            <tr>
+              <td>tobolsk.jpg</td>
+              <td>[3, 3]</td>
+              <td>[6, 3]</td>
+            </tr>
+            <tr>
+              <td>castle.tif</td>
+              <td>[35, 3]</td>
+              <td>[98, 3]</td>
+            </tr>
+            <tr>
+              <td>emir.tif</td>
+              <td>[49, 23]</td>
+              <td>[107, 40]</td>
+            </tr>
+            <tr>
+              <td>harvesters.tif</td>
+              <td>[60, 17]</td>
+              <td>[123, 13]</td>
+            </tr>
+            <tr>
+              <td>icon.tif</td>
+              <td>[42, 17]</td>
+              <td>[90, 23]</td>
+            </tr>
+            <tr>
+              <td>lady.tif</td>
+              <td>[56, 9]</td>
+              <td>[119, 13]</td>
+            </tr>
+            <tr>
+              <td>melons.tif*</td>
+              <td>[80, 10]</td>
+              <td>[106, -10]</td>
+            </tr>
+            <tr>
+              <td>onion_church.tif</td>
+              <td>[52, 25]</td>
+              <td>[108, 36]</td>
+            </tr>
+            <tr>
+              <td>self_portrait.tif*</td>
+              <td>[78, 29]</td>
+              <td>[92, -15]</td>
+            </tr>
+            <tr>
+              <td>three_generations.tif</td>
+              <td>[54, 12]</td>
+              <td>[119, 9]</td>
+            </tr>
+            <tr>
+              <td>train.tif</td>
+              <td>[42, 4]</td>
+              <td>[85, 30]</td>
+            </tr>
+            <tr>
+              <td>workshop.tif</td>
+              <td>[52, -1]</td>
+              <td>[102, -12]</td>
+            </tr>
+          </tbody>
+        </table>  
+        <img class="u-full-width" src="images/doorway.jpg" alt="doorway">
+        <figcaption style="text-align: center"><b>Fig.6</b> - An ornate doorway.</figcaption>
+      </div>
+    </div>
+    <div style="margin-top: 5%" class="row">
+      <h4>Bells and Whistles</h4>
+    </div>
   </div>
+  
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

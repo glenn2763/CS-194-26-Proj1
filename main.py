@@ -102,14 +102,17 @@ def process_image(img):
     r = im[2*height: 3*height]
 
     #crop edges of photo that are just borders and that sometimes mess up the algorithm
-    amount_to_crop = b[0].size // 30
-    g = g[amount_to_crop: -amount_to_crop, amount_to_crop: -amount_to_crop]
-    b = b[amount_to_crop: -amount_to_crop, amount_to_crop: -amount_to_crop]
-    r = r[amount_to_crop: -amount_to_crop, amount_to_crop: -amount_to_crop]
+    amount_to_crop_x = b[0].size // 20
+    amount_to_crop_y = len(b) // 20
+    g = g[amount_to_crop_y: -amount_to_crop_y, amount_to_crop_x: -amount_to_crop_x]
+    b = b[amount_to_crop_y: -amount_to_crop_y, amount_to_crop_x: -amount_to_crop_x]
+    r = r[amount_to_crop_y: -amount_to_crop_y, amount_to_crop_x: -amount_to_crop_x]
 
     #align each image onto the blue channel using pyramid filtering if size is too large
     green_displacement = pyramid_align(g, b, 0)
     red_displacement = pyramid_align(r, b, 0)
+    print(green_displacement)
+    print(red_displacement)
 
     # create a color image
     ag = displace_image(g, green_displacement)
@@ -117,7 +120,7 @@ def process_image(img):
     im_out = np.dstack([ar, ag, b])
 
     # # save the image
-    fname = 'outputs/' + img[5:len(img) - 4] + '.jpg'
+    fname = 'images/' + img[5:len(img) - 4] + '.jpg'
     print(fname)
     skio.imsave(fname, im_out)
 
@@ -129,21 +132,26 @@ def process_image(img):
 
 # These three files produces blurred/misaligned images, not sure why but the spec said to not tweak too many parameters 
 # if most of the images work
-# imname = 'lady.tif'
 # imname = 'melons.tif'
 # imname = 'self_portrait.tif'
 
 
-imname = 'cathedral.jpg'
+# imname = 'cathedral.jpg'
 # imname = 'tobolsk.jpg'
 # imname = 'monastery.jpg'
 # imname = 'castle.tif'
 # imname = 'emir.tif'
 # imname = 'harvesters.tif'
 # imname = 'icon.tif'
+# imname = 'lady.tif'
 # imname = 'onion_church.tif'
 # imname = 'three_generations.tif'
 # imname = 'train.tif'
 # imname = 'workshop.tif'
+
+# images I pulled from the Library of Congress page.
+# imname = 'hut.tif'
+# imname = 'gate.tif'
+imname = 'doorway.tif'
 
 process_image('data/' + imname)
