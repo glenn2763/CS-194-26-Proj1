@@ -55,8 +55,6 @@ def align(image1, image2, displacement_range):
     edge2 = get_edges(image2) # personal implementation of sobel filtering
     edge1 = get_edges(image1)
 
-    skio.imsave('images/cathedral_edges.jpg', edge2)
-
     # edge2 = image2 # using raw images to discern alignment
     # edge1 = image1
 
@@ -137,7 +135,7 @@ def process_image(img):
 # imname = 'self_portrait.tif'
 
 
-imname = 'cathedral.jpg'
+# imname = 'cathedral.jpg'
 # imname = 'tobolsk.jpg'
 # imname = 'monastery.jpg'
 # imname = 'castle.tif'
