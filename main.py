@@ -55,6 +55,8 @@ def align(image1, image2, displacement_range):
     edge2 = get_edges(image2) # personal implementation of sobel filtering
     edge1 = get_edges(image1)
 
+    skio.imsave('images/cathedral_edges.jpg', edge2)
+
     # edge2 = image2 # using raw images to discern alignment
     # edge1 = image1
 
@@ -120,9 +122,8 @@ def process_image(img):
     im_out = np.dstack([ar, ag, b])
 
     # # save the image
-    fname = 'images/' + img[5:len(img) - 4] + '.jpg'
-    print(fname)
-    skio.imsave(fname, im_out)
+    # fname = 'images/' + img[5:len(img) - 4] + '.jpg'
+    # skio.imsave(fname, im_out)
 
     # # display the image
     skio.imshow(im_out)
@@ -136,7 +137,7 @@ def process_image(img):
 # imname = 'self_portrait.tif'
 
 
-# imname = 'cathedral.jpg'
+imname = 'cathedral.jpg'
 # imname = 'tobolsk.jpg'
 # imname = 'monastery.jpg'
 # imname = 'castle.tif'
@@ -150,8 +151,8 @@ def process_image(img):
 # imname = 'workshop.tif'
 
 # images I pulled from the Library of Congress page.
-# imname = 'hut.tif'
+# imname = 'doorway.tif'
 # imname = 'gate.tif'
-imname = 'doorway.tif'
+# imname = 'hut.tif'
 
 process_image('data/' + imname)

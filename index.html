@@ -183,7 +183,34 @@
       </div>
     </div>
     <div style="margin-top: 5%" class="row">
-      <h4>Bells and Whistles</h4>
+      <div class="twelve columns">
+        <h4>Bells and Whistles</h4>
+        <h5>Edge detection</h5>
+        <p>
+          When strictly using the SSD between two images of different color channels issues can arise because the intensities 
+          of the channels may not line up. For example, if there is a pure red house in the picture it would appear black in the 
+          red channel image and white in the green and blue channel images. This then throws off the SSD that I calculated. To 
+          alleviate this I implemented a simplistic edge detection algorithm. The algorithm first blurs the image to reduce 
+          high frequency noise and then applies a Sobel filter to find edges. The resulting image (<b>Fig.7</b>) will end up 
+          the same shape for all three channels because the edges are the only consistent aspect. By using this form of filtering 
+          my images went from misaligned (<b>FIg.8</b>) to aligned (<b>Fig.9</b>).
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="four columns">
+        <img class="u-full-width" src="images/cathedral_edges.jpg" alt="doorway">
+        <figcaption style="text-align: center"><b>Fig.7</b> - Cathedral image after basic edge detection.</figcaption>
+      </div>
+      <div class="four columns">
+        <img class="u-full-width" src="images/cathedral_bad.jpg" alt="doorway">
+        <figcaption style="text-align: center"><b>Fig.8</b> - Cathedral image aligned with raw intensities.</figcaption>
+      </div>
+      <div class="four columns">
+        <img class="u-full-width" src="images/cathedral.jpg" alt="doorway">
+        <figcaption style="text-align: center"><b>Fig.9</b> - Cathedral image aligned with intensities after edge detection.
+        </figcaption>
+      </div>
     </div>
   </div>
   
