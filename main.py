@@ -136,7 +136,7 @@ def process_image(img):
 
 
 # imname = 'cathedral.jpg'
-# imname = 'tobolsk.jpg'
+imname = 'tobolsk.jpg'
 # imname = 'monastery.jpg'
 # imname = 'castle.tif'
 # imname = 'emir.tif'
