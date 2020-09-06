@@ -120,7 +120,7 @@ def process_image(img):
     im_out = np.dstack([ar, ag, b])
 
     # # save the image
-    # fname = 'images/' + img[5:len(img) - 4] + '.jpg'
+    # fname = 'output/' + img[5:len(img) - 4] + '.jpg'
     # skio.imsave(fname, im_out)
 
     # # display the image
